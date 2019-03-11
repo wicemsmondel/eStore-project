@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "expres": "0.0.5",
     "express": "^4.16.4",
@@ -15,5 +16,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wicemsmondel/eStore-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wicemsmondel/eStore-project/issues"
+  },
+  "homepage": "https://github.com/wicemsmondel/eStore-project#readme"
 }

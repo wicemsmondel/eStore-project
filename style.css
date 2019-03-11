@@ -1,9 +1,8 @@
-
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Helvetica Neue",sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
     font-weight: bold;
 }
 
@@ -21,7 +20,7 @@ nav {
 }
 
 nav ul {
-    line-height: 60px;
+    line-height: 93px;
     list-style: none;
     background: rgba(0, 0, 0, 0);
     overflow: hidden;
@@ -38,21 +37,30 @@ nav.black ul {
 }
 
 nav ul li {
-    display: inline-block;
-    padding: 16px 40px;;
+    display: inline;
+    padding: 16px 30px;
+    ;
 }
 
 nav ul li a {
     text-decoration: none;
     color: rgb(190, 190, 190);
-    font-size: 20px;
+    font-size: 13px;
+}
+
+nav ul li input {
+    text-decoration: none;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    border-radius: 5px;
+
 }
 
 .menu-icon {
     line-height: 60px;
     width: 100%;
     background: #000;
-    text-align: right;
+    text-align: center;
     box-sizing: border-box;
     padding: 15px 24px;
     cursor: pointer;
@@ -60,67 +68,34 @@ nav ul li a {
     display: none;
 }
 
-@media(max-width: 786px) {
-
-    .logo {
-          position: fixed;
-          top: 0;
-    }
-
-    nav ul {
-          max-height: 0px;
-          background: #000;
-    }
-
-    nav.black ul {
-          background: #000;
-    }
-
-    .showing {
-          max-height: 50em;
-    }
-
-    nav ul li {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 24px;
-          text-align: center;
-    }
-
-    .menu-icon {
-          display: block;
-    }
-
-}
-
-.pic{
+.pic {
     height: 320px;
     width: 320px;
     margin: 5px;
     border-style: groove;
     border-radius: 5px;
-    transition: 0.3s; 
+    transition: 0.3s;
 }
 
 .pic:hover {
     transform: scale(1.1);
 }
-  
+
 .pic:active {
     transform: scale(2);
     transition: transform .2s;
 }
 
-.product{
-    margin: 5px;
+.product {
+    margin-top: 30px;
     align-content: center;
     background-color: #ffffff;
     padding: 5px;
     border-radius: 5px;
 }
 
-#container{
-	height: 100%;
+#container {
+    height: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -128,40 +103,87 @@ nav ul li a {
     background-color: #c0c0c0;
 }
 
-.price{
+.price {
     text-align: right;
 }
 
-h5{
-   margin: 5px;
-   padding: 5px;
-   background-color: #000000;
-   font-size: 10px;
-   text-transform: uppercase;
-   text-align: center;
-   color: rgb(190, 190, 190);
+h5 {
+    margin: 5px;
+    padding: 5px;
+    background-color: #000000;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(190, 190, 190);
 }
 
-
-
-.like{
+.like {
     width: 15px;
     height: 15px;
-	margin-left: 7px;
-    margin-bottom: 2px;
+    margin-left: 7px;
     cursor: pointer;
 }
 
-.button{
-	cursor: pointer;
+.bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
     border-radius: 5px;
     width: 120px;
     height: 25px;
 }
+
 .parallax-img {
     height: 500px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('https://tinyurl.com/y5maeqs8');
+}
+
+footer {
+    display: flex;
+    height: 90px;
+    background-color: #000;
+    margin-top: 10px;
+    justify-content: center;
+    color: #fff;
+}
+
+.logo_simplon {
+    margin-top: 0px;
+    height: 22px;
+    width: 110px;
+}
+
+
+@media(max-width: 786px) {
+    .logo {
+        position: fixed;
+        top: 0;
+    }
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+    nav.black ul {
+        background: #000;
+    }
+    .showing {
+        max-height: 50em;
+    }
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+    }
+    .menu-icon {
+        display: block;
+    }
 }
