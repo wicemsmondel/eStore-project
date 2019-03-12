@@ -39,12 +39,12 @@ nav.black ul {
 nav ul li {
     display: inline;
     padding: 16px 30px;
-    ;
+    
 }
 
 nav ul li a {
     text-decoration: none;
-    color: rgb(190, 190, 190);
+    color: rgb(255, 255, 255);
     font-size: 13px;
 }
 
@@ -53,7 +53,7 @@ nav ul li input {
     color: rgb(190, 190, 190);
     font-size: 13px;
     border-radius: 5px;
-
+    
 }
 
 .menu-icon {
@@ -68,32 +68,6 @@ nav ul li input {
     display: none;
 }
 
-.pic {
-    height: 320px;
-    width: 320px;
-    margin: 5px;
-    border-style: groove;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.pic:hover {
-    transform: scale(1.1);
-}
-
-.pic:active {
-    transform: scale(2);
-    transition: transform .2s;
-}
-
-.product {
-    margin-top: 30px;
-    align-content: center;
-    background-color: #ffffff;
-    padding: 5px;
-    border-radius: 5px;
-}
-
 #container {
     height: 100%;
     display: flex;
@@ -101,6 +75,33 @@ nav ul li input {
     justify-content: space-evenly;
     align-items: center;
     background-color: #c0c0c0;
+}
+
+.product {
+    margin: 30px;
+    
+    align-content: center;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.1);
+}
+
+.pic {
+    height: 400px;
+    width: 320px;
+    margin: 5px;
+    border-style: groove;
+    border-radius: 5px;
+}
+
+.pic:active {
+    transform: scale(2);
+    transition: transform .2s;
 }
 
 .price {
@@ -114,7 +115,7 @@ h5 {
     font-size: 10px;
     text-transform: uppercase;
     text-align: center;
-    color: rgb(190, 190, 190);
+    color: rgb(255, 255, 255);
 }
 
 .like {
@@ -159,31 +160,4 @@ footer {
     margin-top: 0px;
     height: 22px;
     width: 110px;
-}
-
-
-@media(max-width: 786px) {
-    .logo {
-        position: fixed;
-        top: 0;
-    }
-    nav ul {
-        max-height: 0px;
-        background: #000;
-    }
-    nav.black ul {
-        background: #000;
-    }
-    .showing {
-        max-height: 50em;
-    }
-    nav ul li {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 24px;
-        text-align: center;
-    }
-    .menu-icon {
-        display: block;
-    }
 }

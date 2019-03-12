@@ -109,6 +109,51 @@ $('#accessorybtn').click(function () {
     });
 });
 
+// function send() {
+//     const input = document.getElementById ('client_name').value;
+//     console.log(input);
+//     $.post('http://localhost:3000/client'),
+//         { caca : input },
+//         function (response) {
+//             console.log(response);
+//         }
+// }
+function newClient() {
+    var client_name = document.querySelector('#client_name').value;
+    var client_firstname = document.querySelector('#client_firstname').value;
+    var client_mail = document.querySelector('#client_mail').value;
+    var client_password = document.querySelector('#client_password').value;
+    var gender_id = document.querySelector('#gender_id').value;
+    $.post('http://localhost:3000/clients', 
+    { client_name  : client_name ,  
+    client_firstname : client_firstname , 
+    client_mail: client_mail ,  
+    client_password : client_password  , 
+    gender_id: gender_id },
+    function (response) { 
+        console.log(response);
+    });
+}
+
+function send() {
+    const search_input = document.getElementById('searchreq').value;
+    console.log(search_input);
+
+    $.post(
+        'http://localhost:3000/' + search_input,
+        { searchreq: search_input },
+        function (response) {
+            console.log(response);
+            container.innerHTML = "";
+            response.forEach(function (article) {
+                new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+            });
+            clik();
+        });
+
+}
+
+
 //initialisation - création class Products et display html
 class Products {
     constructor(name, pic, price, liked, likeImg) {
@@ -140,7 +185,7 @@ class Products {
         this.prodName.setAttribute('class', 'name');
         this.prodPic.setAttribute('class', 'pic');
         this.prodPic.setAttribute('src', this.pic);
-        this.prodDivBottom.setAttribute('class','bottom')
+        this.prodDivBottom.setAttribute('class', 'bottom')
         this.prodPrice.setAttribute('class', 'price');
         this.buyButton.setAttribute('class', 'button');
         this.likeButton.setAttribute('src', this.likeImg);
@@ -162,12 +207,12 @@ class Products {
         this.prodPic.innerHTML = this.pic;
         this.prodPrice.innerHTML = this.price + '€';
         this.buyButton.innerHTML = "Ajouter au panier";
-    }
+    } 
 
     buy() {
         console.log("j'achete " + this.name);
     }
-    like(el) {
+    like(el)  {
         this.liked = !this.liked;
         el.setAttribute('src', (this.liked ? 'images/Icons/like.png' : 'images/Icons/dislike.png'));
     }

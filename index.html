@@ -11,30 +11,30 @@
 </head>
 
 <body>
-
     <header>
-        <div>
-            <nav>
-                <div class="menu-icon">
-                    <i class="fa fa-bars fa-2x"></i>
-                </div>
-                <div><img src="https://tinyurl.com/y5e7c6x5" alt="logo" class="logo"></div>
-                <img src="https://tinyurl.com/y5e7c6x5" alt="logo" class="logo">
-                <div class="menu">
-                    <ul>
-                        <li><a id="homepage" href="#Home">ACCUEIL</a></li>
-                        <li><a id="genderbtn1" href="#Women">FEMME</a></li>
-                        <li><a id="genderbtn2" href="#Men">HOMME</a></li>
-                        <li><a id="tshirtbtn" href="#Tshirts">T-SHIRTS</a></li>
-                        <li><a id="trouserbtn" href="#Trousers">PANTALONS</a></li>
-                        <li><a id="shoebtn" href="#Shoes">CHAUSSURES</a></li>
-                        <li><a id="accessorybtn" href="#Accessory">ACCESSOIRES</a></li>
-                        <li><input type="text" value="RECHERCHER"></li>
-                    </ul>
-                </div>
-            </nav>
+        <nav>
+            <div><img src="https://tinyurl.com/y5e7c6x5" alt="logo" class="logo"></div>
+
+            <ul>
+                <li><a id="homepage" href="#Home">ACCUEIL</a></li>
+                <li><a id="genderbtn1" href="#Women">FEMME</a></li>
+                <li><a id="genderbtn2" href="#Men">HOMME</a></li>
+                <li><a id="tshirtbtn" href="#Tshirts">T-SHIRTS</a></li>
+                <li><a id="trouserbtn" href="#Trousers">PANTALONS</a></li>
+                <li><a id="shoebtn" href="#Shoes">CHAUSSURES</a></li>
+                <li><a id="accessorybtn" href="#Accessory">ACCESSOIRES</a></li>
+                <li><input id="searchreq"><button id="searchbtn" onclick="send()">Search</button></li>
+            </ul>
+        </nav>
     </header>
+
     <div class="parallax-img"></div>
+    <input id="client_firstname" type="text">
+    <input id="client_name" type="text">
+    <input id="client_mail" type="text">
+    <input id="client_password" type="text">
+    <input id="gender_id" type="number">
+    <button onclick="newClient()">Créer un compte</button>
     <div id="container"></div>
     <footer>
         <div class="footer1">

@@ -10,6 +10,9 @@ const port = process.env.port || 3000;
 
 const dbFile = 'store.db';
 const db = new sqlite3.Database(dbFile);
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 db.serialize(() => {
     //création de la table des catégories d'articles
@@ -38,14 +41,14 @@ db.serialize(() => {
     db.run('INSERT INTO Brand (brand_name) VALUES(?)', 'MANGO');
 
     //création de la table des clients
-    db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_name TEXT UNIQUE)');
+    db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_firstname TEXT , client_name TEXT , client_mail TEXT , client_password TEXT , gender_id INTEGER)');
 
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Rachel Green');
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Monica Geller');
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Phoebe Buffay');
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Joey Tribiani');
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Chandler Bing');
-    db.run('INSERT INTO Client (client_name) VALUES(?)', 'Ross Geller');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Rachel',' Green','exemple@gmail.com', 'mdp', 1);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Monica', 'Geller','exemple@gmail.com', 'mdp', 1);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Phoebe', 'Buffay','exemple@gmail.com', 'mdp', 1);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Joey', 'Tribiani','exemple@gmail.com', 'mdp', 2);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Chandler', 'Bing','exemple@gmail.com', 'mdp', 2);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Ross', 'Geller','exemple@gmail.com', 'mdp', 2);
 
 
 
@@ -84,7 +87,7 @@ db.serialize(() => {
 
 //ecoute le serveur
 app.listen((port), function (error) {
-    if (!error) console.log("app listening port "+port);
+    if (!error) console.log("app listening port " + port);
 });
 
 
@@ -117,25 +120,58 @@ app.get('/tshirt', function (request, response) {
 });
 
 //requete category trouser
-app.get('/trouser', function (request, response){
-    db.all('SELECT * FROM Article WHERE Article.category_id=4;', function(error, data) {
+app.get('/trouser', function (request, response) {
+    db.all('SELECT * FROM Article WHERE Article.category_id=4;', function (error, data) {
         response.send(data);
     });
-})
+});
 
 //requete category shoe
-app.get('/shoe', function (request, response){
-    db.all('SELECT * FROM Article WHERE Article.category_id=3;', function(error, data) {
+app.get('/shoe', function (request, response) {
+    db.all('SELECT * FROM Article WHERE Article.category_id=3;', function (error, data) {
         response.send(data);
     });
-})
+});
 
 //requete category accessory
-app.get('/accessory', function (request, response){
-    db.all('SELECT * FROM Article WHERE Article.category_id=6;', function(error, data) {
+app.get('/accessory', function (request, response) {
+    db.all('SELECT * FROM Article WHERE Article.category_id=6;', function (error, data) {
         response.send(data);
     });
 })
 
+// //requete client pour BDD UPDATE
+// app.get('/clients', function (request,response){
+//     db.all('SELECT * FROM Client;', function (error, data){
+//         response.send(data);
+//     });
+// });
 
- 
+//Creation de la route
+// app.post('/client', function (request, response) {
+//     console.log(request.body)
+//     //request.body pour récupéré la valeur envoyé par le Front et l'inséré dans la BDD
+//     db.run('INSERT INTO  Client (client_name) VALUES (?)',
+//         resquest.body.caca,
+//         function (error, data) {
+//             response.send(request.body.client_name);
+//         });
+// });
+
+app.post('/clients', function (request, response) {
+    console.log(request.body.client_name);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', request.body.client_firstname , request.body.client_name, request.body.client_mail, request.body.client_password, request.body.gender_id);
+    // response.send(data);
+})
+
+app.post('/:search_input', function (request, response) {
+    if (request.body.searchreq === "homme") {
+        db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
+            response.send(data);
+        });
+    } else if (request.params.search_input === "femme") {
+        db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
+            response.send(data);
+        });
+    }
+});
