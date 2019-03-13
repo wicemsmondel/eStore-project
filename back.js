@@ -49,12 +49,12 @@ db.serialize(() => {
     //création de la table des clients
     db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_firstname TEXT , client_name TEXT , client_mail TEXT , client_password TEXT)');
 
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Rachel',' Green','exemple@gmail.com', 'mdp');
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Monica', 'Geller','exemple@gmail.com', 'mdp');
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Phoebe', 'Buffay','exemple@gmail.com', 'mdp');
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Joey', 'Tribiani','exemple@gmail.com', 'mdp');
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Chandler', 'Bing','exemple@gmail.com', 'mdp');
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Ross', 'Geller','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Rachel', ' Green', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Monica', 'Geller', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Phoebe', 'Buffay', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Joey', 'Tribiani', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Chandler', 'Bing', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Ross', 'Geller', 'exemple@gmail.com', 'mdp');
 
 
 
@@ -86,7 +86,7 @@ db.serialize(() => {
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Baskets Super King', 'images/Shoes/DG SHOES 695E.jpg', 695, false, './images/Icons/dislike.png', 3, 6, 2);
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Sandales bijoux ', 'images/Shoes/DG SHOES 1985E.jpg', 1985, false, './images/Icons/dislike.png', 3, 6, 1);
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - Light-Pantalon-lgant-en-velours', 'images/Trousers/Gucci - Light-Pantalon-lgant-en-velours.jpg', 680, false, './images/Icons/dislike.png', 4, 6, 2);
-    
+
     //création de la table de jointure Achats (client <-> articles) 
     db.run('CREATE TABLE IF NOT EXISTS Achats (achat_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_id INTEGER , article_id INTEGER, FOREIGN KEY (client_id) REFERENCES Client(client_id), FOREIGN KEY (article_id) REFERENCES Article(article_id))');
     db.run('INSERT INTO Achats (client_id, article_id) VALUES (?,?)', 1, 1);
@@ -115,16 +115,16 @@ app.get('/', function (request, response) {
 });
 
 app.get('/:genre', function (req, res) {
-    db.all("SELECT * FROM Article NATURAL JOIN Gender WHERE gender_name=?",req.params.genre, function (error, data) {
+    db.all("SELECT * FROM Article NATURAL JOIN Gender WHERE gender_name=?", req.params.genre, function (error, data) {
         res.send(data);
     });
 });
 
 
 //utilisation paramètres de route
-app.get('/category/:category', function (req,res){
+app.get('/category/:category', function (req, res) {
     console.log(req.params.category);
-    db.all("SELECT * FROM Article NATURAL JOIN Category WHERE category_name=?",req.params.category, function (error, data) {
+    db.all("SELECT * FROM Article NATURAL JOIN Category WHERE category_name=?", req.params.category, function (error, data) {
         res.send(data);
     });
 })
@@ -171,12 +171,12 @@ app.get('/category/:category', function (req,res){
 //     });
 // })
 
-// //requete client pour BDD UPDATE
-// app.get('/clients', function (request,response){
-//     db.all('SELECT * FROM Client;', function (error, data){
-//         response.send(data);
-//     });
-// });
+//requete client pour BDD UPDATE
+app.get('/clients', function (request, response) {
+    db.all('SELECT * FROM Client;', function (error, data) {
+        response.send(data);
+    });
+});
 
 //Creation de la route
 // app.post('/client', function (request, response) {
@@ -191,8 +191,8 @@ app.get('/category/:category', function (req,res){
 
 app.post('/clients', function (request, response) {
     console.log(request.body.client_name);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ? , ?, ?)', request.body.client_firstname , request.body.client_name, request.body.client_mail, request.body.client_password);
-    // response.send(data);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ? , ?, ?)', request.body.client_firstname, request.body.client_name, request.body.client_mail, request.body.client_password);
+    response.send(data);
 })
 
 app.post('/:search_input', function (request, response, error) {

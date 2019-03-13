@@ -1,3 +1,1 @@
--- SELECT * FROM Achats NATURAL JOIN Article NATURAL JOIN Client NATURAL JOIN Brand NATURAL JOIN Category
-SELECT * FROM Client;
--- SELECT * FROM Article NATURAL JOIN Category WHERE category_name='PANTALONS';
+SELECT * FROM Client
