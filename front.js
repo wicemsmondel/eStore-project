@@ -1,17 +1,47 @@
 var products = [];
 
+
+
+
+for (i=0;i<4;i++){
+    $('.nav'+i).click(function(el){
+        console.log(el.target.innerHTML);
+        document.getElementById("container").innerHTML="";
+        $.get('http://localhost:3000/category/' +el.target.innerHTML, function (response) {
+            console.log(response);
+            response.forEach(function (article) {
+                new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+            });
+        clik();
+        });
+    });
+}
+
+for (i=1;i<3;i++){
+    $('.genre'+i).click(function(el){
+        console.log(el.target.innerHTML);
+        document.getElementById("container").innerHTML="";
+        $.get('http://localhost:3000/' +el.target.innerHTML, function (response) {
+            console.log(response);
+            response.forEach(function (article) {
+                new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+            });
+        clik();
+        });
+    });
+}
+
 //récupération des articles de la bdd et creation des instances de la classe Products pour chaque élément de l'array response
 //requête tous les articles de la table Article
-$.get('http://localhost:3000', function (response) {
-    response.forEach(function (article) {
-        new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-    });
-    clik();
+//fonction pour requete accueil et update contenu
+$('#logo').click(function () {
+    var container = document.getElementById("container");
+    container.innerHTML = "";
+
 });
 
-
-//fonction pour requete accueil et update contenu
-$('#homepage').click(function () {
+//fonction pour requete tous les articles
+$('#all').click(function () {
     var container = document.getElementById("container");
     container.innerHTML = "";
     $.get('http://localhost:3000', function (response) {
@@ -24,90 +54,89 @@ $('#homepage').click(function () {
     });
 });
 
+// //fonction pour requete gender femme et update contenu
+// $('#genderbtn1').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/women', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete gender femme et update contenu
-$('#genderbtn1').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/women', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
+//         clik();
+//     });
+// });
 
-        clik();
-    });
-});
+// //fonction pour requete gender homme et update contenu
+// $('#genderbtn2').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/men', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete gender homme et update contenu
-$('#genderbtn2').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/men', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
+//         clik();
+//     });
+// });
 
-        clik();
-    });
-});
+// //fonction pour requete tshirt et update contenu
+// $('#tshirtbtn').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/tshirt', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete tshirt et update contenu
-$('#tshirtbtn').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/tshirt', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
+//         clik();
+//     });
+// });
 
-        clik();
-    });
-});
+// //fonction pour requete trouser et update contenu
+// $('#trouserbtn').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/trouser', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete trouser et update contenu
-$('#trouserbtn').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/trouser', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
+//         clik();
+//     });
+// });
 
-        clik();
-    });
-});
+// //fonction pour requete shoe et update contenu
+// $('#shoebtn').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/shoe', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete shoe et update contenu
-$('#shoebtn').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/shoe', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
+//         clik();
+//     });
+// });
 
-        clik();
-    });
-});
+// //fonction pour requete accessory et update contenu
+// $('#accessorybtn').click(function () {
+//     var container = document.getElementById("container");
+//     container.innerHTML = "";
+//     $.get('http://localhost:3000/accessory', function (response) {
+//         console.log(response);
+//         response.forEach(function (article) {
+//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//         });
 
-//fonction pour requete accessory et update contenu
-$('#accessorybtn').click(function () {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    $.get('http://localhost:3000/accessory', function (response) {
-        console.log(response);
-        response.forEach(function (article) {
-            new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-        });
-
-        clik();
-    });
-});
+//         clik();
+//     });
+// });
 
 // function send() {
 //     const input = document.getElementById ('client_name').value;
@@ -123,24 +152,23 @@ function newClient() {
     var client_firstname = document.querySelector('#client_firstname').value;
     var client_mail = document.querySelector('#client_mail').value;
     var client_password = document.querySelector('#client_password').value;
-    var gender_id = document.querySelector('#gender_id').value;
-    $.post('http://localhost:3000/clients', 
-    { client_name  : client_name ,  
-    client_firstname : client_firstname , 
-    client_mail: client_mail ,  
-    client_password : client_password  , 
-    gender_id: gender_id },
-    function (response) { 
-        console.log(response);
-    });
+    $.post('http://localhost:3000/clients',
+        {
+            client_name: client_name,
+            client_firstname: client_firstname,
+            client_mail: client_mail,
+            client_password: client_password,
+        },
+        function (response) {
+            console.log(response);
+        });
 }
 
 function send() {
     const search_input = document.getElementById('searchreq').value;
     console.log(search_input);
 
-    $.post(
-        'http://localhost:3000/' + search_input,
+    $.post('http://localhost:3000/' + search_input,
         { searchreq: search_input },
         function (response) {
             console.log(response);
@@ -152,6 +180,23 @@ function send() {
         });
 
 }
+// function send() {
+//     const search_input = document.getElementById('searchreq').value;
+//     console.log(search_input);
+
+//     $.post(
+//         'http://localhost:3000/' + search_input,
+//         { searchreq: search_input },
+//         function (response) {
+//             console.log(response);
+//             container.innerHTML = "";
+//             response.forEach(function (article) {
+//                 new Products(article.name, article.pic, article.price, article.like, article.likeimg);
+//             });
+//             clik();
+//         });
+
+// }
 
 
 //initialisation - création class Products et display html
@@ -187,7 +232,7 @@ class Products {
         this.prodPic.setAttribute('src', this.pic);
         this.prodDivBottom.setAttribute('class', 'bottom')
         this.prodPrice.setAttribute('class', 'price');
-        this.buyButton.setAttribute('class', 'button');
+        this.buyButton.setAttribute('class', 'buyButton');
         this.likeButton.setAttribute('src', this.likeImg);
         this.likeButton.setAttribute('class', 'like');
     }
@@ -207,12 +252,12 @@ class Products {
         this.prodPic.innerHTML = this.pic;
         this.prodPrice.innerHTML = this.price + '€';
         this.buyButton.innerHTML = "Ajouter au panier";
-    } 
+    }
 
     buy() {
         console.log("j'achete " + this.name);
     }
-    like(el)  {
+    like(el) {
         this.liked = !this.liked;
         el.setAttribute('src', (this.liked ? 'images/Icons/like.png' : 'images/Icons/dislike.png'));
     }
@@ -220,7 +265,7 @@ class Products {
 
 //ajout event sur le bouton 'Ajouter au panier' et sur le 'like'
 function clik() {
-    var buyButton = document.getElementsByClassName("button");
+    var buyButton = document.getElementsByClassName("buyButton");
     for (let i = 0; i < products.length; i++) {
         buyButton[i].addEventListener("click", function () {
             products[i].buy();
@@ -237,4 +282,7 @@ function clik() {
 }
 
 
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
 

@@ -2,46 +2,68 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-store</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>E-store</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div><img src="https://tinyurl.com/y5e7c6x5" alt="logo" class="logo"></div>
+  <header>
+    <div><a href="#Home"><img src="https://tinyurl.com/y5e7c6x5" alt="logo" id="logo"></a></div>
+    <nav>
+      <ul>
+        <li><a id="all" href="#tous">COLLECTION</a></li>
+        <li><a id="genderbtn1" href="#FEMME" class="genre1">FEMME</a></li>
+        <li><a id="genderbtn2" href="#HOMME" class="genre2">HOMME</a></li>
+        <li><a id="tshirtbtn" href="#T-SHIRTS" class="nav0">T-SHIRTS</a></li>
+        <li><a id="trouserbtn" href="#PANTALONS" class="nav1">PANTALONS</a></li>
+        <li><a id="shoebtn" href="#CHAUSSURES" class="nav2">CHAUSSURES</a></li>
+        <li><a id="accessorybtn" href="#ACCESSOIRES" class="nav3">ACCESSOIRES</a></li>
+        <li><input id="searchreq"><button id="searchbtn" onclick="send()">Search</button></li>
+      </ul>
+    </nav>
+    <button class="open-button" onclick="openForm()">Créer mon compte</button>
 
-            <ul>
-                <li><a id="homepage" href="#Home">ACCUEIL</a></li>
-                <li><a id="genderbtn1" href="#Women">FEMME</a></li>
-                <li><a id="genderbtn2" href="#Men">HOMME</a></li>
-                <li><a id="tshirtbtn" href="#Tshirts">T-SHIRTS</a></li>
-                <li><a id="trouserbtn" href="#Trousers">PANTALONS</a></li>
-                <li><a id="shoebtn" href="#Shoes">CHAUSSURES</a></li>
-                <li><a id="accessorybtn" href="#Accessory">ACCESSOIRES</a></li>
-                <li><input id="searchreq"><button id="searchbtn" onclick="send()">Search</button></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="form-popup" id="myForm">
+      <form class="form-container">
+        <h1>Formulaire</h1>
 
-    <div class="parallax-img"></div>
-    <input id="client_firstname" type="text">
-    <input id="client_name" type="text">
-    <input id="client_mail" type="text">
-    <input id="client_password" type="text">
-    <input id="gender_id" type="number">
-    <button onclick="newClient()">Créer un compte</button>
-    <div id="container"></div>
-    <footer>
-        <div class="footer1">
-            <p>POWERED BY</p>
-            <img src="https://tinyurl.com/y3emclgp" alt="logo simplon" class="logo_simplon">
-        </div>
-    </footer>
+        <label for="prenom"><b>Prénom</b></label>
+        <input id="client_firstname" type="text" placeholder="Entrer votre prénom" name="prenom" required>
+
+        <label for="nom"><b>Nom</b></label>
+        <input id="client_name" type="text" placeholder="Entrer votre nom" name="nom" required>
+
+        <label for="email"><b>Email</b></label>
+        <input id="client_mail" type="text" placeholder="Entrer votre Email" name="email" required>
+
+        <label for="psw"><b>Mot de passe</b></label>
+        <input id="client_password" type="password" placeholder="Entrer votre mot de passe" name="psw" required>
+
+        <button type="submit" class="btn" onclick="newClient()">Créer mon compte</button>
+
+      </form>
+    </div>
+  </header>
+
+  <div class="parallax-img"></div>
+
+
+
+  <div id="container"></div>
+  <footer>
+
+
+    <div class="footer1">
+      <p>POWERED BY LAURE & WICEM</p>
+      <img src="https://tinyurl.com/y3emclgp" alt="logo simplon" class="logo_simplon">
+    </div>
+  </footer>
 </body>
 <script src="navbar.js"></script>
 <script src="front.js"></script>

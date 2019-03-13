@@ -18,12 +18,12 @@ db.serialize(() => {
     //création de la table des catégories d'articles
     db.run('CREATE TABLE IF NOT EXISTS Category (category_id INTEGER PRIMARY KEY AUTOINCREMENT,  category_name TEXT UNIQUE)');
 
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'shirt');
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'tshirt');
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'shoe');
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'trouser');
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'dress');
-    db.run('INSERT INTO Category (category_name) VALUES(?)', 'accessory');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'SHIRT');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'T-SHIRTS');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'CHAUSSURES');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'PANTALONS');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'ROBES');
+    db.run('INSERT INTO Category (category_name) VALUES(?)', 'ACCESSOIRES');
 
 
     //création de la table des marques
@@ -40,15 +40,21 @@ db.serialize(() => {
     db.run('INSERT INTO Brand (brand_name) VALUES(?)', 'ZARA');
     db.run('INSERT INTO Brand (brand_name) VALUES(?)', 'MANGO');
 
-    //création de la table des clients
-    db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_firstname TEXT , client_name TEXT , client_mail TEXT , client_password TEXT , gender_id INTEGER)');
+    //création de la table genre
+    db.run('CREATE TABLE IF NOT EXISTS Gender (gender_id INTEGER PRIMARY KEY AUTOINCREMENT,  gender_name TEXT UNIQUE)');
 
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Rachel',' Green','exemple@gmail.com', 'mdp', 1);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Monica', 'Geller','exemple@gmail.com', 'mdp', 1);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Phoebe', 'Buffay','exemple@gmail.com', 'mdp', 1);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Joey', 'Tribiani','exemple@gmail.com', 'mdp', 2);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Chandler', 'Bing','exemple@gmail.com', 'mdp', 2);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', 'Ross', 'Geller','exemple@gmail.com', 'mdp', 2);
+    db.run('INSERT INTO Gender (gender_name) VALUES(?)', 'FEMME');
+    db.run('INSERT INTO Gender (gender_name) VALUES(?)', 'HOMME');
+
+    //création de la table des clients
+    db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_firstname TEXT , client_name TEXT , client_mail TEXT , client_password TEXT)');
+
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Rachel',' Green','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Monica', 'Geller','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Phoebe', 'Buffay','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Joey', 'Tribiani','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Chandler', 'Bing','exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Ross', 'Geller','exemple@gmail.com', 'mdp');
 
 
 
@@ -69,8 +75,18 @@ db.serialize(() => {
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Sac à dos Panda en fausse fourrure', 'images/Accessories/D&G - Sac à dos Panda en fausse fourrure.webp', 895, false, './images/Icons/dislike.png', 6, 4, 2);
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Sac à dos Leopard en fausse fourrure', 'images/Accessories/D&G - Sac à dos Leopard en fausse fourrure.webp', 895, false, './images/Icons/dislike.png', 6, 4, 2);
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - Pantalon de jogging en chenille', 'images/Trousers/Gucci - Pantalon de jogging en chenille.jpg', 950, false, './images/Icons/dislike.png', 4, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - T-shirt  donald', 'images/Tshirts/gucci tshirt 445E.jpg', 445, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - T-shirt  tigre', 'images/Tshirts/gucci tshirt 549E.jpg', 549, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - T-shirt  bouche', 'images/Tshirts/gucci tshirt 345E.jpg', 345, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Balenciaga - T-shirt band', 'images/Tshirts/balenciaga tshirt 395E.jpg', 395, false, './images/Icons/dislike.png', 2, 1, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - T-shirt heart', 'images/Tshirts/dg tshirt 450.jpg', 450, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - T-shirt football', 'images/Tshirts/dg tshirt 200e.jpg', 200, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - T-shirt imprimé coton', 'images/Tshirts/D&G - Tshirt coton, imprimé et écussons.jpg', 280, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Philipp PLEIN - T-shirt Tiger', 'images/Tshirts/t-shirt-bit-us-philipp-plein-philipp-plein590euro.jpg', 590, false, './images/Icons/dislike.png', 2, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Baskets Super King', 'images/Shoes/DG SHOES 695E.jpg', 695, false, './images/Icons/dislike.png', 3, 6, 2);
+    db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'D&G - Sandales bijoux ', 'images/Shoes/DG SHOES 1985E.jpg', 1985, false, './images/Icons/dislike.png', 3, 6, 1);
     db.run('INSERT INTO Article (name, pic, price, like, likeimg, category_id, brand_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', 'Gucci - Light-Pantalon-lgant-en-velours', 'images/Trousers/Gucci - Light-Pantalon-lgant-en-velours.jpg', 680, false, './images/Icons/dislike.png', 4, 6, 2);
-
+    
     //création de la table de jointure Achats (client <-> articles) 
     db.run('CREATE TABLE IF NOT EXISTS Achats (achat_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_id INTEGER , article_id INTEGER, FOREIGN KEY (client_id) REFERENCES Client(client_id), FOREIGN KEY (article_id) REFERENCES Article(article_id))');
     db.run('INSERT INTO Achats (client_id, article_id) VALUES (?,?)', 1, 1);
@@ -98,47 +114,62 @@ app.get('/', function (request, response) {
     });
 });
 
-//requete gender femme
-app.get('/women', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
-        response.send(data);
+app.get('/:genre', function (req, res) {
+    db.all("SELECT * FROM Article NATURAL JOIN Gender WHERE gender_name=?",req.params.genre, function (error, data) {
+        res.send(data);
     });
 });
 
-//requete gender homme
-app.get('/men', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
-        response.send(data);
-    });
-});
 
-//requete category shirt
-app.get('/tshirt', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.category_id=2;', function (error, data) {
-        response.send(data);
-    });
-});
-
-//requete category trouser
-app.get('/trouser', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.category_id=4;', function (error, data) {
-        response.send(data);
-    });
-});
-
-//requete category shoe
-app.get('/shoe', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.category_id=3;', function (error, data) {
-        response.send(data);
-    });
-});
-
-//requete category accessory
-app.get('/accessory', function (request, response) {
-    db.all('SELECT * FROM Article WHERE Article.category_id=6;', function (error, data) {
-        response.send(data);
+//utilisation paramètres de route
+app.get('/category/:category', function (req,res){
+    console.log(req.params.category);
+    db.all("SELECT * FROM Article NATURAL JOIN Category WHERE category_name=?",req.params.category, function (error, data) {
+        res.send(data);
     });
 })
+
+// //requete gender femme
+// app.get('/women', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
+//         response.send(data);
+//     });
+// });
+
+// //requete gender homme
+// app.get('/men', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
+//         response.send(data);
+//     });
+// });
+
+// //requete category shirt
+// app.get('/tshirt', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.category_id=2;', function (error, data) {
+//         response.send(data);
+//     });
+// });
+
+// //requete category trouser
+// app.get('/trouser', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.category_id=4;', function (error, data) {
+//         response.send(data);
+//     });
+// });
+
+// //requete category shoe
+// app.get('/shoe', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.category_id=3;', function (error, data) {
+//         response.send(data);
+//     });
+// });
+
+// //requete category accessory
+// app.get('/accessory', function (request, response) {
+//     db.all('SELECT * FROM Article WHERE Article.category_id=6;', function (error, data) {
+//         response.send(data);
+//     });
+// })
 
 // //requete client pour BDD UPDATE
 // app.get('/clients', function (request,response){
@@ -160,18 +191,35 @@ app.get('/accessory', function (request, response) {
 
 app.post('/clients', function (request, response) {
     console.log(request.body.client_name);
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password, gender_id) VALUES(?, ?, ? , ?, ?)', request.body.client_firstname , request.body.client_name, request.body.client_mail, request.body.client_password, request.body.gender_id);
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ? , ?, ?)', request.body.client_firstname , request.body.client_name, request.body.client_mail, request.body.client_password);
     // response.send(data);
 })
 
-app.post('/:search_input', function (request, response) {
+app.post('/:search_input', function (request, response, error) {
     if (request.body.searchreq === "homme") {
+        console.log("salut cest cool");
         db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
             response.send(data);
         });
     } else if (request.params.search_input === "femme") {
+        console.log("coolcoolcool");
         db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
             response.send(data);
         });
+    } else {
+        console.log("why though");
+        response.status(404).send("not found");
     }
 });
+
+// app.post('/:search_input', function (request, response) {
+//     if (request.body.searchreq === "homme") {
+//         db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
+//             response.send(data);
+//         });
+//     } else if (request.params.search_input === "femme") {
+//         db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
+//             response.send(data);
+//         });
+//     }
+// });
