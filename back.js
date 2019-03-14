@@ -49,7 +49,7 @@ db.serialize(() => {
     //création de la table des clients
     db.run('CREATE TABLE IF NOT EXISTS Client (client_id INTEGER PRIMARY KEY AUTOINCREMENT,  client_firstname TEXT , client_name TEXT , client_mail TEXT , client_password TEXT)');
 
-    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Rachel', ' Green', 'exemple@gmail.com', 'mdp');
+    db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Rachel', 'Green', 'exemple@gmail.com', 'mdp');
     db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Monica', 'Geller', 'exemple@gmail.com', 'mdp');
     db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Phoebe', 'Buffay', 'exemple@gmail.com', 'mdp');
     db.run('INSERT INTO Client (client_firstname, client_name, client_mail, client_password) VALUES(?, ?, ?, ?)', 'Joey', 'Tribiani', 'exemple@gmail.com', 'mdp');
@@ -129,65 +129,12 @@ app.get('/category/:category', function (req, res) {
     });
 })
 
-// //requete gender femme
-// app.get('/women', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
-//         response.send(data);
-//     });
-// });
-
-// //requete gender homme
-// app.get('/men', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
-//         response.send(data);
-//     });
-// });
-
-// //requete category shirt
-// app.get('/tshirt', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.category_id=2;', function (error, data) {
-//         response.send(data);
-//     });
-// });
-
-// //requete category trouser
-// app.get('/trouser', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.category_id=4;', function (error, data) {
-//         response.send(data);
-//     });
-// });
-
-// //requete category shoe
-// app.get('/shoe', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.category_id=3;', function (error, data) {
-//         response.send(data);
-//     });
-// });
-
-// //requete category accessory
-// app.get('/accessory', function (request, response) {
-//     db.all('SELECT * FROM Article WHERE Article.category_id=6;', function (error, data) {
-//         response.send(data);
-//     });
-// })
-
 //requete client pour BDD UPDATE
 app.get('/clients', function (request, response) {
     db.all('SELECT * FROM Client;', function (error, data) {
         response.send(data);
     });
 });
-
-//Creation de la route
-// app.post('/client', function (request, response) {
-//     console.log(request.body)
-//     //request.body pour récupéré la valeur envoyé par le Front et l'inséré dans la BDD
-//     db.run('INSERT INTO  Client (client_name) VALUES (?)',
-//         resquest.body.caca,
-//         function (error, data) {
-//             response.send(request.body.client_name);
-//         });
-// });
 
 app.post('/clients', function (request, response) {
     console.log(request.body.client_name);
@@ -211,15 +158,3 @@ app.post('/:search_input', function (request, response, error) {
         response.status(404).send("not found");
     }
 });
-
-// app.post('/:search_input', function (request, response) {
-//     if (request.body.searchreq === "homme") {
-//         db.all('SELECT * FROM Article WHERE Article.gender_id=2;', function (error, data) {
-//             response.send(data);
-//         });
-//     } else if (request.params.search_input === "femme") {
-//         db.all('SELECT * FROM Article WHERE Article.gender_id=1;', function (error, data) {
-//             response.send(data);
-//         });
-//     }
-// });

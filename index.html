@@ -28,37 +28,25 @@
       </ul>
     </nav>
     <button class="open-button" onclick="openForm()">Créer mon compte</button>
-
     <div class="form-popup" id="myForm">
       <form class="form-container">
         <h1>Formulaire</h1>
-
         <label for="prenom"><b>Prénom</b></label>
         <input id="client_firstname" type="text" placeholder="Entrer votre prénom" name="prenom" required>
-
         <label for="nom"><b>Nom</b></label>
         <input id="client_name" type="text" placeholder="Entrer votre nom" name="nom" required>
-
         <label for="email"><b>Email</b></label>
         <input id="client_mail" type="text" placeholder="Entrer votre Email" name="email" required>
-
         <label for="psw"><b>Mot de passe</b></label>
         <input id="client_password" type="password" placeholder="Entrer votre mot de passe" name="psw" required>
-
         <button type="submit" class="btn" onclick="newClient()">Créer mon compte</button>
-
+        <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
       </form>
     </div>
   </header>
-
   <div class="parallax-img"></div>
-
-
-
   <div id="container"></div>
   <footer>
-
-
     <div class="footer1">
       <p>POWERED BY LAURE & WICEM</p>
       <img src="https://tinyurl.com/y3emclgp" alt="logo simplon" class="logo_simplon">

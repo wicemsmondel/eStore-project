@@ -1,39 +1,34 @@
 var products = [];
 
-
-
-
-for (i=0;i<4;i++){
-    $('.nav'+i).click(function(el){
+for (i = 0; i < 4; i++) {
+    $('.nav' + i).click(function (el) {
         console.log(el.target.innerHTML);
-        document.getElementById("container").innerHTML="";
-        $.get('http://localhost:3000/category/' +el.target.innerHTML, function (response) {
+        document.getElementById("container").innerHTML = "";
+        $.get('http://localhost:3000/category/' + el.target.innerHTML, function (response) {
             console.log(response);
             response.forEach(function (article) {
                 new Products(article.name, article.pic, article.price, article.like, article.likeimg);
             });
-        clik();
+            clik();
         });
     });
 }
 
-for (i=1;i<3;i++){
-    $('.genre'+i).click(function(el){
+for (i = 1; i < 3; i++) {
+    $('.genre' + i).click(function (el) {
         console.log(el.target.innerHTML);
-        document.getElementById("container").innerHTML="";
-        $.get('http://localhost:3000/' +el.target.innerHTML, function (response) {
+        document.getElementById("container").innerHTML = "";
+        $.get('http://localhost:3000/' + el.target.innerHTML, function (response) {
             console.log(response);
             response.forEach(function (article) {
                 new Products(article.name, article.pic, article.price, article.like, article.likeimg);
             });
-        clik();
+            clik();
         });
     });
 }
 
-//récupération des articles de la bdd et creation des instances de la classe Products pour chaque élément de l'array response
-//requête tous les articles de la table Article
-//fonction pour requete accueil et update contenu
+//requête retour page
 $('#logo').click(function () {
     var container = document.getElementById("container");
     container.innerHTML = "";
@@ -54,99 +49,7 @@ $('#all').click(function () {
     });
 });
 
-// //fonction pour requete gender femme et update contenu
-// $('#genderbtn1').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/women', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
 
-//         clik();
-//     });
-// });
-
-// //fonction pour requete gender homme et update contenu
-// $('#genderbtn2').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/men', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
-
-//         clik();
-//     });
-// });
-
-// //fonction pour requete tshirt et update contenu
-// $('#tshirtbtn').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/tshirt', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
-
-//         clik();
-//     });
-// });
-
-// //fonction pour requete trouser et update contenu
-// $('#trouserbtn').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/trouser', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
-
-//         clik();
-//     });
-// });
-
-// //fonction pour requete shoe et update contenu
-// $('#shoebtn').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/shoe', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
-
-//         clik();
-//     });
-// });
-
-// //fonction pour requete accessory et update contenu
-// $('#accessorybtn').click(function () {
-//     var container = document.getElementById("container");
-//     container.innerHTML = "";
-//     $.get('http://localhost:3000/accessory', function (response) {
-//         console.log(response);
-//         response.forEach(function (article) {
-//             new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//         });
-
-//         clik();
-//     });
-// });
-
-// function send() {
-//     const input = document.getElementById ('client_name').value;
-//     console.log(input);
-//     $.post('http://localhost:3000/client'),
-//         { caca : input },
-//         function (response) {
-//             console.log(response);
-//         }
-// }
 function newClient() {
     var client_name = document.querySelector('#client_name').value;
     var client_firstname = document.querySelector('#client_firstname').value;
@@ -178,26 +81,7 @@ function send() {
             });
             clik();
         });
-
 }
-// function send() {
-//     const search_input = document.getElementById('searchreq').value;
-//     console.log(search_input);
-
-//     $.post(
-//         'http://localhost:3000/' + search_input,
-//         { searchreq: search_input },
-//         function (response) {
-//             console.log(response);
-//             container.innerHTML = "";
-//             response.forEach(function (article) {
-//                 new Products(article.name, article.pic, article.price, article.like, article.likeimg);
-//             });
-//             clik();
-//         });
-
-// }
-
 
 //initialisation - création class Products et display html
 class Products {
@@ -278,11 +162,22 @@ function clik() {
             products[i].like(e.target);
         })
     }
-
 }
 
+//Effet de la navbar au scroll
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('nav').addClass('black');
+    }
+    else {
+        $('nav').removeClass('black');
+    }
+})
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
 
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}

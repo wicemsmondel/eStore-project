@@ -41,7 +41,6 @@ nav.black ul {
 nav ul li {
     display: inline;
     padding: 30px;
-    
 }
 
 nav ul li a {
@@ -55,16 +54,18 @@ nav ul li input {
     color: rgb(190, 190, 190);
     font-size: 13px;
     border-radius: 5px;
-    
 }
-#searchbtn{
+
+#searchbtn {
     border-radius: 5px;
-    margin: 2px;    
+    margin: 2px;
 }
 
 #searchreq {
     width: 90px;
+    color: #000;
 }
+
 #container {
     height: 100%;
     display: flex;
@@ -76,7 +77,6 @@ nav ul li input {
 
 .product {
     margin: 40px;
-    
     align-content: center;
     background-color: #ffffff;
     padding: 5px;
@@ -97,7 +97,7 @@ nav ul li input {
 }
 
 .pic:active {
-    transform: scale(2);
+    transform: scale(1.7);
     transition: transform .2s;
 }
 
@@ -173,48 +173,50 @@ footer {
     left: 0px;
     width: 200px;
     z-index: 2;
-  }
-  
-  .form-popup {
+}
+
+.form-popup {
     display: none;
     position: fixed;
     top: 150px;
     left: 500px;
     border: 3px solid #f1f1f1;
     z-index: 9;
-  }
-  
-  .form-container {
+}
+
+.form-container {
     max-width: 400px;
     padding: 10px;
     background-color: white;
-  }
-  
-  .form-container input[type=text], .form-container input[type=password] {
+}
+
+.form-container input[type=text], .form-container input[type=password] {
     width: 100%;
     padding-top: 15px;
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
-  }
-  
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+}
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
     background-color: #ddd;
-  }
-  
-  .form-container .btn {
+}
+
+.form-container .btn {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     opacity: 0.8;
-  }
-      
-  .form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-  }
+}
 
-  
+.form-container .cancel {
+    background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
