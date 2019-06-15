@@ -139,7 +139,7 @@ class Products {
     }
 
     buy() {
-        console.log("j'achete " + this.name);
+        alert(this.name + ' a été ajouté au panier !');
     }
     like(el) {
         this.liked = !this.liked;
@@ -174,6 +174,7 @@ $(window).on("scroll", function () {
     }
 })
 
+//Formulaire pop-up
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
