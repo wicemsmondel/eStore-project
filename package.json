@@ -1,17 +1,16 @@
 {
-  "name": "package",
+  "name": "eStore",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "expres": "0.0.5",
     "express": "^4.16.4",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node back.js"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +23,5 @@
   "bugs": {
     "url": "https://github.com/wicemsmondel/eStore-project/issues"
   },
-  "homepage": "https://github.com/wicemsmondel/eStore-project#readme"
+  "homepage": "https://wicemsmondel.github.io/eStore-project/"
 }
